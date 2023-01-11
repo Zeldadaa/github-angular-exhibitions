@@ -4,21 +4,41 @@
 
 <!-- Site Body -->
 <div class="exhibition-main">
-    <div>
-        查詢條件
-    </div>
-
-<div>
-    顯示全部 ---- merge Test
-    <div foreach>
-        <div>
-            <img >
-
-            <div>
-
-            </div>
+    <div class="search-filter">
+        <div class="search-filter-container">
+            <div name="serchbar" style="height: 50px;"></div>
+            <div name="searchfilter" style="height: 50px;"></div>
         </div>
     </div>
-</div>
+
+    <div class="search-result">
+        <div class="search-result-container" *ngIf=" tempData?haveValue():false">
+            <ng-container *ngFor="let data of tempData">
+                <div class="exhibition-card">
+                    <div class="exhibition-card-img"><img /></div>
+                    <div class="exhibition-card-title">{{data.title}}</div>
+                    <div class="exhibition-card-info">
+                        <div>
+                            {{data.startDate}}
+                            <span>~</span>
+                            {{data.endDate}}
+                        </div>
+                        <div>
+                            <ng-container *ngFor="let item of data.showInfo">
+                                <div *ngIf="!((item.locationName).includes('='));else masterUnit">
+                                    {{item.locationName}}
+                                </div>
+                                <ng-template #masterUnit>
+                                    {{data.masterUnit}}
+                                </ng-template>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+
+
+    </div>
 
 </div>

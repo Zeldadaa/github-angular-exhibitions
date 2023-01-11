@@ -22,9 +22,12 @@ export class ExhibitionCommonService {
    * @memberof ExhibitionCommonService
    */
   getExhibitonsData() {
-    const url = "https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6";
+    const url = 'https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6';
     const ret = this.http.get<CExhibitions[]>(url).pipe(shareReplay(1));
     return ret;
   }
+
+
+  
 
 }
