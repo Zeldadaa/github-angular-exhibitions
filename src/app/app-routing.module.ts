@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   //設定各個參數要導向的Component
   { path: 'index', component: ExhibitionIndexComponent },
-  { path: 'search/:test', component: ExhibitionSearchComponent },
+  { path: 'search', component: ExhibitionSearchComponent },
   { path: 'detail/:uid', component: ExhibitionDetailComponent },
 ];
 

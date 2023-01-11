@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./exhibition-header.component.scss']
 })
 export class ExhibitionHeaderComponent {
-
+  
 }
