@@ -1,0 +1,80 @@
+<!--Site Header-->
+<app-exhibition-header></app-exhibition-header>
+
+
+
+<!--Site Body-->
+<div class="exhibition-main">
+  <!--封面-->
+  <div class="cover-div">
+    <img src="assets\img\cover2.jpg" />
+    <div class="cover-block">
+      <div>今天想來點什麼樣的活動、展覽呢？</div>
+      <i class="bi bi-chevron-down"></i>
+    </div>
+  </div>
+
+  <!--近期展覽-->
+  <a id="anchor_recent"></a>
+  <div class="title-div font-size-header anchor">近期展覽</div>
+  <div class="block-div">
+    <div class="recent-div-container" *ngIf="(data_recent._dataLength) ?getRecentDataProcess():alertfun()">
+      <ng-container *ngFor="let item of data_recentfilterdata let i = index">
+        <div class="exhibition-card" routerLink="/detail/{{item.UID}}">
+          <div class="exhibition-card-img"><img [src]="item.imageUrl" /></div>
+          <div class="exhibition-card-title">{{i +1}} {{item.title}}</div>
+          <div>
+            {{item.startDate}}
+            <span>~</span>
+            {{item.endDate}}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+
+  <!--展覽查詢-->
+  <a id="anchor_search"></a>
+  <div class="title-div font-size-header">展覽查詢</div>
+  <div class="block-div">
+    <div class="search-div">
+      <div class="search-bar">
+        <input class="search-input" type="text" placeholder="Search" />
+        <button><i class="bi bi-search"></i></button>
+      </div>
+      <button class="search-subTitle font-size-header-child" routerLink="/search/">進階查詢</button>
+    </div>
+  </div>
+
+
+  <!--隨機推薦-->
+  <a id="anchor_random"></a>
+  <div class="title-div font-size-header">隨機推薦</div>
+  <div class="block-div">
+    <div class="random-div">
+      <div class="random-click">
+        <div>不知道<br />要看什麼展覽嗎？</div>
+        <p>讓我們推薦你吧！</p>
+        <button *ngIf="data_exhibitions$ !=null" (click)="getRandomData(1)">點我推薦<i class="bi bi-dice-5"></i></button>
+      </div>
+      <div class="random-info">
+        <ng-container *ngFor="let random_item of data_random let i = index">
+          <div class="random-exhibition-card">
+            <div class="exhibition-card-img"><img [src]="random_item.imageUrl" /></div>
+            <div class="exhibition-card-title">{{random_item.title}}</div>
+            <div>
+              {{random_item.startDate}}
+              <span>~</span>
+              {{random_item.endDate}}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Site Footer-->
+<app-exhibition-footer></app-exhibition-footer>
