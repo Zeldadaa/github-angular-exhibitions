@@ -6,30 +6,31 @@
 <div class="exhibition-main">
     <div class="search-filter">
         <div class="search-filter-container">
-            <div name="serchbar" style="height: 50px;"></div>
-            <div name="searchfilter" style="height: 50px;"></div>
+            <div name="serchbar" style="height: 50px; background-color: aqua;"></div>
+            <div name="searchfilter" style="height: 50px; background-color: antiquewhite;"></div>
         </div>
     </div>
 
+
     <div class="search-result">
-        <div class="search-result-container" *ngIf=" tempData?haveValue():false">
-            <ng-container *ngFor="let data of tempData">
-                <div class="exhibition-card">
-                    <div class="exhibition-card-img"><img /></div>
-                    <div class="exhibition-card-title">{{data.title}}</div>
+        <div class="search-result-container" *ngIf=" data_exhibitions$ | async as dataExhibitions">
+            <ng-container *ngFor="let data of dataExhibitions">
+                <div [ngClass]="{'exhibition-card':true,'card-block':data._haveImg}">
+                    <div class="exhibition-card-img"><img [src]="data._imageUrl" /></div>
+                    <div class="exhibition-card-title">{{data._title}}</div>
                     <div class="exhibition-card-info">
                         <div>
-                            {{data.startDate}}
+                            {{data._startDate}}
                             <span>~</span>
-                            {{data.endDate}}
+                            {{data._endDate}}
                         </div>
                         <div>
-                            <ng-container *ngFor="let item of data.showInfo">
+                            <ng-container *ngFor="let item of data._showInfo">
                                 <div *ngIf="!((item.locationName).includes('='));else masterUnit">
                                     {{item.locationName}}
                                 </div>
                                 <ng-template #masterUnit>
-                                    {{data.masterUnit}}
+                                    {{data._masterUnit}}
                                 </ng-template>
                             </ng-container>
                         </div>
@@ -37,8 +38,6 @@
                 </div>
             </ng-container>
         </div>
-
-
     </div>
 
 </div>

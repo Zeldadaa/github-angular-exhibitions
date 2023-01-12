@@ -56,7 +56,7 @@ button {
 
 
 .exhibition-card {
-    width: 40%;
+    
     height: 50%;
     background-color: rgba(190, 190, 190, 0.6);
     display: flex;
@@ -80,9 +80,12 @@ button {
         flex-wrap: inherit;
         justify-content: space-between;
         align-content: center;
+        gap: 50px;
     }
 }
 
-
+.card-block{
+    width: 40%;
+}
 
 

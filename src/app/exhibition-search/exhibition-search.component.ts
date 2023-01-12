@@ -1,7 +1,7 @@
 import { ExhibitionCommonService } from './../exhibition-common.service';
 import { Observable, tap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { CExhibitions } from '../classes.component';
+import { C_EXHIBITIONS } from '../app.model';
 
 @Component({
   selector: 'app-exhibition-search',
@@ -9,26 +9,26 @@ import { CExhibitions } from '../classes.component';
   styleUrls: ['./exhibition-search.component.scss']
 })
 export class ExhibitionSearchComponent implements OnInit {
-  data_exhibitions$?: Observable<CExhibitions[]>;
+  data_exhibitions$?: Observable<C_EXHIBITIONS[]>;
 
-  tempData = new Array<CExhibitions>();
+  tempData = new Array<C_EXHIBITIONS>();
+
 
   constructor(private commonservice: ExhibitionCommonService) {
     this.data_exhibitions$ = commonservice.data$;
   }
 
   ngOnInit(): void {
-    
-    
+
     this.commonservice.data$.subscribe(
-      (data)=>{
+      (data) => {
         this.tempData = data;
-        console.log(this.tempData);
+        console.log(data);
       }
     );
-    
+
   }
-  haveValue(){
+  haveValue() {
     // console.log(this.tempData[0].showInfo);
     return true;
   }

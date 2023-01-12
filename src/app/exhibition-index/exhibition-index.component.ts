@@ -1,9 +1,7 @@
 import { ExhibitionCommonService } from './../exhibition-common.service';
-import { Location } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, shareReplay, tap } from 'rxjs';
-import { CDataInfo, CExhibitions } from '../classes.component';
+import { C_DATAINFO, C_EXHIBITIONS } from '../app.model';
 
 @Component({
   selector: 'app-exhibition-index',
@@ -17,28 +15,28 @@ export class ExhibitionIndexComponent implements OnInit {
    * @type {Observable<CExhibitions[]>}
    * @memberof ExhibitionIndexComponent
    */
-  data_exhibitions$: Observable<CExhibitions[]>;
+  data_exhibitions$: Observable<C_EXHIBITIONS[]>;
 
   /**
    * 展覽資料 - [近期展覽]第一階段篩選
-   * @type {CDataInfo}
+   * @type {C_DATAINFO}
    * @memberof ExhibitionIndexComponent
    */
-  data_recent: CDataInfo = new CDataInfo();
+  data_recent: C_DATAINFO = new C_DATAINFO();
 
   /**
    * 展覽資料 - [近期展覽]篩選後資料
-   * @type {Array<CExhibitions>}
+   * @type {Array<C_EXHIBITIONS>}
    * @memberof ExhibitionIndexComponent
    */
-  data_recentfilterdata: Array<CExhibitions> = new Array<CExhibitions>();
+  data_recentfilterdata: Array<C_EXHIBITIONS> = new Array<C_EXHIBITIONS>();
 
   /**
    * 展覽資料 - [隨機推薦]資料
-   * @type {Array<CExhibitions>}
+   * @type {Array<C_EXHIBITIONS>}
    * @memberof ExhibitionIndexComponent
    */
-  data_random: Array<CExhibitions> = new Array<CExhibitions>();
+  data_random: Array<C_EXHIBITIONS> = new Array<C_EXHIBITIONS>();
 
 
 
@@ -55,7 +53,7 @@ export class ExhibitionIndexComponent implements OnInit {
 
 
   // [近期展覽]取得資料
-  private getRecentData(targetData: Observable<CExhibitions[]>) {
+  private getRecentData(targetData: Observable<C_EXHIBITIONS[]>) {
 
     //會回傳新的陣列(tempfilterData)，不會動到原有陣列的資料
     this.data_recent._dataOb = targetData.pipe(map(data => data.filter((value) => {
@@ -64,12 +62,13 @@ export class ExhibitionIndexComponent implements OnInit {
       // 取回第0個，就是「"2023-01-03"」
       const todayDateStr = new Date().toISOString().split('T')[0];
       const todayDate = Date.parse(todayDateStr);
-      let startDate = Date.parse(value.startDate);
+      let startDate = Date.parse(value._startDate);
       return startDate >= todayDate;
     })));
 
     this.data_recent._dataOb.subscribe(s => {
       this.data_recent._dataLength = s.length;
+      
     });
   }
 
@@ -110,8 +109,8 @@ export class ExhibitionIndexComponent implements OnInit {
 
 
   //從「全部展覽資料」中取得特定一筆
-  takeSpecificData(indexArray: number[], targetDataArray: Observable<CExhibitions[]> | undefined) {
-    let temp_array = new Array<CExhibitions>;
+  takeSpecificData(indexArray: number[], targetDataArray: Observable<C_EXHIBITIONS[]> | undefined) {
+    let temp_array = new Array<C_EXHIBITIONS>;
 
     //迴圈寫資料
     indexArray.forEach(index => {
