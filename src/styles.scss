@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
 html,body{
     font-family: 'Noto Sans TC';
      // width: 100% ;
@@ -63,26 +68,29 @@ button {
     flex-direction: column;
     padding: 10px;
 
-    .exhibition-card-img {
-        margin: auto;
-        overflow: hidden;
     
-        img {
-            width: 100%;
-        }
-    }
-    .exhibition-card-title {
-        font-size: 20px;
-    }
-    .exhibition-card-info{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: inherit;
-        justify-content: space-between;
-        align-content: center;
-        gap: 50px;
+}
+
+.exhibition-card-img {
+    margin: auto;
+    overflow: hidden;
+
+    img {
+        width: 100%;
     }
 }
+.exhibition-card-title {
+    font-size: 20px;
+}
+.exhibition-card-info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: inherit;
+    justify-content: space-between;
+    align-content: center;
+    gap: 50px;
+}
+
 
 .card-block{
     width: 40%;

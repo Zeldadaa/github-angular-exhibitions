@@ -40,32 +40,24 @@ export class C_EXHIBITIONS {
 }
 
 export class C_SHOWINFO {
+  public _onSales: boolean =this.onSales === "Y" ? true : false;
   constructor(
-    public time: string,
-    public location: string,
-    public locationName: string,
-    public onSales: Enum_ONSALES,
-    public price: string,
-    public latitude: null | string,
-    public longitude: null | string,
-    public endTime: string,
+    public _time: string,
+    public _location: string,
+    public _locationName: string,
+    public onSales: string,
+    
+    public _price: string,
+    public _latitude: null | string,
+    public _longitude: null | string,
+    public _endTime: string,
   ) {
-    // this.onSales = this.cast(this.onSales);
+
   }
-  // cast(item: any) {
-  //   return item.map((sales: any) => {
-  //     return (sales:any)=>{ 
-  //       return new 
-  //     }
-  //   });
-  // }
+  
 
 }
 
-export enum Enum_ONSALES {
-  N = "N",
-  Y = "Y",
-}
 
 
 export class C_DATAINFO {
@@ -87,7 +79,7 @@ export class ExhibitionsAdapter {
   /**
    * Adapter - 資料轉為特定Class C_EXHIBITIONS
    * @param {*} item
-   * @return {*}  {CTEST}
+   * @return {*}  {C_EXHIBITIONS}
    * @memberof ExhibitionsAdapter
    */
   adapter(item: any): C_EXHIBITIONS {
