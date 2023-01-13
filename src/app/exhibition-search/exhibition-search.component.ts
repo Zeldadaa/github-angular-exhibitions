@@ -28,11 +28,16 @@ export class ExhibitionSearchComponent implements OnInit {
     );
 
   }
-  haveValue() {
-    // console.log(this.tempData[0].showInfo);
-    return true;
-  }
+  
 
+
+  /**
+   * 查詢 Bar 點擊查詢
+   * @memberof ExhibitionSearchComponent
+   */
+  searchSubmit(){
+    
+  }
 
 
 }
