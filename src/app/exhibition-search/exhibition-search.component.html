@@ -8,16 +8,17 @@
         <div class="search-filter-container">
             <!-- Search Bar -->
             <div class="search-bar">
-                <input type="text" placeholder="Search" (keyup.enter)="searchSubmit()">
+                <input type="text" placeholder="Search"  #searchInput  (input)="searchSubmit(searchInput.value)">
             </div>
             <!-- Search Filter Option -->
-            <div name="searchfilter" style="height: 50px; background-color: antiquewhite;"></div>
+            <div name="searchfilter" style="height: 50px; background-color: antiquewhite;">
+            </div>
         </div>
     </div>
 
 
     <div class="search-result">
-        <div class="search-result-container" *ngIf=" data_exhibitions$ | async as dataExhibitions">
+        <div class="search-result-container" *ngIf=" data_searchResult$ | async as dataExhibitions">
             <ng-container *ngFor="let data of dataExhibitions">
                 <div class="exhibition-card">
                     <div [ngClass]="{'search-card-img-empty':!data._haveImg}"
