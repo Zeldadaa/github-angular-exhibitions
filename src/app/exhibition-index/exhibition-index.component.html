@@ -20,7 +20,7 @@
   <div class="block-div">
     <div class="recent-div-container" *ngIf="(data_recent._dataLength) ?getRecentDataProcess():alertfun()">
       <ng-container *ngFor="let item of data_recentfilterdata let i = index">
-        <div class="exhibition-card card-block" routerLink="/detail/{{item._UID}}">
+        <div class="exhibition-card card-block" routerLink="/detail/{{item._UID}}" >
           <div class="exhibition-card-img"><img [src]="item._imageUrl" /></div>
           <div class="exhibition-card-title">{{i +1}} {{item._title}}</div>
           <div>
@@ -40,10 +40,10 @@
   <div class="block-div">
     <div class="search-div">
       <div class="search-bar">
-        <input class="search-input" type="text" placeholder="Search" />
-        <button><i class="bi bi-search"></i></button>
+        <input class="search-input" type="text" placeholder="Search" [(ngModel)]="searchString"/>
+        <button routerLink="/search/{{searchString}}"><i class="bi bi-search"></i></button>
       </div>
-      <button class="search-subTitle font-size-header-child" routerLink="/search/">進階查詢</button>
+      <button class="search-subTitle font-size-header-child" routerLink="/search/{{searchString}}">進階查詢</button>
     </div>
   </div>
 

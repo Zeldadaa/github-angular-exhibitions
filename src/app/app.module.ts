@@ -10,6 +10,7 @@ import { ExhibitionDetailComponent } from './exhibition-detail/exhibition-detail
 import { ExhibitionHeaderComponent } from './exhibition-header/exhibition-header.component';
 import { ExhibitionFooterComponent } from './exhibition-footer/exhibition-footer.component';
 import { ExhibitionCommonService } from './exhibition-common.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ExhibitionCommonService } from './exhibition-common.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: ErrorLogHandler },

@@ -8,18 +8,18 @@
         <div class="search-filter-container">
             <!-- Search Bar -->
             <div class="search-bar">
-                <input type="text" placeholder="Search"  #searchInput  (input)="searchSubmit(searchInput.value)">
+                <input type="text" placeholder="Search" #searchInput (input)="searchSubmit(searchInput.value)"
+                    [value]="searchValue">
             </div>
             <!-- Search Filter Option -->
-            <div name="searchfilter" style="height: 50px; background-color: antiquewhite;">
-            </div>
+            <!-- <div name="searchfilter" style="height: 50px; background-color: antiquewhite;"> </div> -->
         </div>
     </div>
 
 
     <div class="search-result">
-        <div class="search-result-container" *ngIf=" data_searchResult$ | async as dataExhibitions">
-            <ng-container *ngFor="let data of dataExhibitions">
+        <div class="search-result-container" *ngIf="(data_searchResult$ | async)?.length;else noneResult">
+            <ng-container *ngFor="let data of (data_searchResult$ | async)">
                 <div class="exhibition-card">
                     <div [ngClass]="{'search-card-img-empty':!data._haveImg}"
                         class="exhibition-card-img search-card-img">
@@ -33,19 +33,18 @@
                             {{data._endDate}}
                         </div>
                         <div>
-                            <ng-container *ngFor="let item of data._showInfo">
-                                <div *ngIf="!((item._locationName).includes('='));else masterUnit">
-                                    {{item._locationName}}
-                                </div>
-                                <ng-template #masterUnit>
-                                    {{data._masterUnit}}
-                                </ng-template>
-                            </ng-container>
+                            {{data._locationName_Show}}
+                          
                         </div>
                     </div>
                 </div>
             </ng-container>
         </div>
+        <ng-template #noneResult>
+            <div class="search-result-none">
+                <div>查無資料</div>
+            </div>
+        </ng-template>
     </div>
 
 </div>

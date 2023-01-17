@@ -40,6 +40,13 @@ export class ExhibitionIndexComponent implements OnInit {
 
 
 
+  /**
+   * 展覽查詢 - 查詢字串
+   * @type {string}
+   * @memberof ExhibitionIndexComponent
+   */
+  searchString:string='';
+
   constructor(private commonService: ExhibitionCommonService) {
     this.data_exhibitions$ = commonService.data$;
   }

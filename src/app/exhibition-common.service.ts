@@ -23,12 +23,15 @@ export class ExhibitionCommonService {
    */
   getExhibitonsData() {
     const url = 'https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6';
+
     //API取回資料，是Observable型態
     const apiDataArray = this.http.get<any>(url).pipe(shareReplay(1));
     //透過model.ts檔中的function將api資料轉換成自訂Class的資料
     const ret = apiDataArray.pipe(map((data) => {
       return data.map((item: any) => this.ExhibitionsAdapter.adapter(item));
     }));
+    // ret.subscribe(s=>console.log(s));
+
     return ret;
   }
 

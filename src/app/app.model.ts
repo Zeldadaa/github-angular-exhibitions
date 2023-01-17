@@ -1,32 +1,96 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+
+
 export class C_EXHIBITIONS {
+  _version: string = '';
+  _UID: string = '';
+  _title: string = '';
+  _category: string = '';
+  _showInfo: C_SHOWINFO[] = [];
+
+  get _showInfo_Property(): C_SHOWINFO {
+    return this._showInfo[0];
+  }
+
+  get _locationName_Show(): string {
+    let ret = this._showInfo_Property._locationName;
+    if (ret.includes('=')) {
+      ret = this._masterUnit_Property;
+    }
+    return ret;
+  }
+
+  _showUnit: string = '';
+  _discountInfo: string = '';
+  _descriptionFilterHtml: string = '';
+  _imageUrl: string = '';
   _haveImg: boolean = (this._imageUrl) ? true : false;
+  _masterUnit: string[] = [];
+  get _masterUnit_Property(): string {
+    return this._masterUnit[0]
+  };
+  _subUnit: string[] = [];
+  _supportUnit: string[] = [];
+  _otherUnit: string[] = [];
+  _webSales: string = '';
+  _sourceWebPromote: string = '';
+  _comment: string = '';
+  _editModifyDate: string = '';
+  _sourceWebName: string = '';
+  _startDate: string = '';
+  _endDate: string = '';
+  _hitRate: number = 0;
+
+
+
   constructor(
-    public _version: string,
-    public _UID: string,
-    public _title: string,
-    public _category: string,
-    public _showInfo: C_SHOWINFO[],
-    public _showUnit: string,
-    public _discountInfo: string,
-    public _descriptionFilterHtml: string,
-    public _imageUrl: string,
-    public _masterUnit: string[],
-    public _subUnit: string[],
-    public _supportUnit: string[],
-    public _otherUnit: string[],
-    public _webSales: string,
-    public _sourceWebPromote: string,
-    public _comment: string,
-    public _editModifyDate: string,
-    public _sourceWebName: string,
-    public _startDate: string,
-    public _endDate: string,
-    public _hitRate: number,
+    version: string,
+    UID: string,
+    title: string,
+    category: string,
+    showInfo: C_SHOWINFO[],
+    showUnit: string,
+    discountInfo: string,
+    descriptionFilterHtml: string,
+    imageUrl: string,
+    masterUnit: string[],
+    subUnit: string[],
+    supportUnit: string[],
+    otherUnit: string[],
+    webSales: string,
+    sourceWebPromote: string,
+    comment: string,
+    editModifyDate: string,
+    sourceWebName: string,
+    startDate: string,
+    endDate: string,
+    hitRate: number,
   ) {
-    this._showInfo = this.cast(this._showInfo);
+    // this.showInfo = this.cast(this._showInfo);
+
+    this._version = version;
+    this._UID = UID;
+    this._title = title;
+    this._category = category;
+    this._showInfo = this.cast(showInfo);
+    this._showUnit = showUnit;
+    this._discountInfo = discountInfo;
+    this._descriptionFilterHtml = descriptionFilterHtml;
+    this._imageUrl = imageUrl;
+    this._masterUnit = masterUnit;
+    this._subUnit = subUnit;
+    this._supportUnit = supportUnit;
+    this._otherUnit = otherUnit;
+    this._webSales = webSales;
+    this._sourceWebPromote = sourceWebPromote;
+    this._comment = comment;
+    this._editModifyDate = editModifyDate;
+    this._sourceWebName = sourceWebName;
+    this._startDate = startDate;
+    this._endDate = endDate;
+    this._hitRate = hitRate;
   }
 
   cast(item: any) {
@@ -40,21 +104,37 @@ export class C_EXHIBITIONS {
 }
 
 export class C_SHOWINFO {
-  public _onSales: boolean =this.onSales === "Y" ? true : false;
-  constructor(
-    public _time: string,
-    public _location: string,
-    public _locationName: string,
-    public onSales: string,
-    
-    public _price: string,
-    public _latitude: null | string,
-    public _longitude: null | string,
-    public _endTime: string,
-  ) {
 
+  _time: string = '';
+  _location: string = '';
+  _locationName: string = '';
+  _onSales: string = '';
+  _onSales_Bool: boolean = this._onSales === "Y" ? true : false;
+  _price: string = '';
+  _latitude: null | string = '';
+  _longitude: null | string = '';
+  _endTime: string = '';
+
+  constructor(
+    time: string,
+    location: string,
+    locationName: string,
+    onSales: string,
+    price: string,
+    latitude: null | string,
+    longitude: null | string,
+    endTime: string,
+  ) {
+    this._time = time;
+    this._location = location;
+    this._locationName = locationName;
+    this._onSales = onSales;
+    this._price = price;
+    this._latitude = latitude;
+    this._longitude = longitude;
+    this._endTime = endTime;
   }
-  
+
 
 }
 

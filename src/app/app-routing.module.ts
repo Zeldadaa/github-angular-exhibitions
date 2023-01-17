@@ -7,8 +7,10 @@ import { ExhibitionSearchComponent } from './exhibition-search/exhibition-search
 const routes: Routes = [
   //設定網址為空白，沒帶任何參數時要轉址到哪裡
   { path: '', redirectTo: 'index', pathMatch: 'full' },
+  // { path: 'search/', redirectTo: 'search/:search', pathMatch: 'full' },
   //設定各個參數要導向的Component
   { path: 'index', component: ExhibitionIndexComponent },
+   { path: 'search/:search', component: ExhibitionSearchComponent },
   { path: 'search', component: ExhibitionSearchComponent },
   { path: 'detail/:uid', component: ExhibitionDetailComponent },
 ];
