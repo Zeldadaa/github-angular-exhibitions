@@ -26,7 +26,15 @@ export class C_EXHIBITIONS {
   _discountInfo: string = '';
   _descriptionFilterHtml: string = '';
   _imageUrl: string = '';
-  _haveImg: boolean = (this._imageUrl) ? true : false;
+  // _haveImg: boolean = (this._imageUrl) ? true : false;
+
+  get _haveImg():boolean{
+    let ret = false;
+    if (this._imageUrl) {
+      ret = true;
+    }
+    return ret;
+  }
   _masterUnit: string[] = [];
   get _masterUnit_Property(): string {
     return this._masterUnit[0]
@@ -109,7 +117,14 @@ export class C_SHOWINFO {
   _location: string = '';
   _locationName: string = '';
   _onSales: string = '';
-  _onSales_Bool: boolean = this._onSales === "Y" ? true : false;
+ 
+  get _onSales_bool(): boolean {
+    let ret = false;
+    if (this._onSales === "Y") {
+      ret = true;
+    }
+    return ret;
+  }
   _price: string = '';
   _latitude: null | string = '';
   _longitude: null | string = '';

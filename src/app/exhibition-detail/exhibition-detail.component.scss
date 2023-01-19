@@ -1,3 +1,44 @@
-p{
-    color: red;
+
+.main {
+    position: relative;
+}
+
+.info-cover {
+    height: 33em;
+    overflow: hidden;
+    position: fixed;
+
+    img {
+        filter: blur(5px);
+    }
+}
+
+
+.main-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 20%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+
+}
+
+
+.info-title{
+    font-size: xx-large;
+}
+
+.info-desc{
+    font-size: larger;
+    text-indent: 2em;
+}
+
+.content-align {
+    margin: auto 10em;
 }

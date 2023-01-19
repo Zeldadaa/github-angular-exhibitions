@@ -1,2 +1,56 @@
-<p>exhibition-detail works!</p>
-<div>{{uid|async}}</div>
+<!-- Site Header -->
+<app-exhibition-header></app-exhibition-header>
+
+<!-- Site Body -->
+<div class="exhibition-main main ">
+    <div class="info-cover">
+        <ng-container *ngIf="(data_Info$|async)?._haveImg"></ng-container>
+        <img src="assets\img\cover.jpg">
+    </div>
+    <div class="main-container">
+        <div class="info-title block-div">
+            {{(data_Info$|async)?._title}}
+        </div>
+
+        <div>
+            <div class="block-div content-align info-desc" infoDescription>
+                {{(data_Info$|async)?._descriptionFilterHtml}}
+            </div>
+        </div>
+        <div class="title-div font-size-header ">展覽時間</div>
+        <div class=" block-div info-title" 展覽時間block>
+            {{(data_Info$|async)?._startDate}}
+            <span>~</span>
+            {{(data_Info$|async)?._endDate}}
+        </div>
+
+        <div class="title-div font-size-header ">展覽地點</div>
+        <div class=" block-div info-title" 展覽地點block>
+            <div>
+                {{(data_Info$|async)?._showInfo_Property?._locationName}}
+            </div>
+            <div googlemap>
+                <!-- <iframe width="300" height="170" frameborder="0" marginheight="0" marginwidth="0"
+                src="https://maps.google.com/maps?q=24.157234,120.66606&hl=es&z=14&amp;output=embed">
+            </iframe> -->
+                <iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://maps.google.com/maps?q={{latitude}},{{longitude}}&hl=es&z=14&amp;output=embed">
+                </iframe>
+            </div>
+        </div>
+
+        <ng-container *ngIf="(data_Info$|async)?._showInfo_Property?._onSales_bool">
+            <div class="title-div font-size-header ">售票資訊</div>
+            <div class="block-div info-title" 售票資訊block>
+                <div>
+                    {{(data_Info$|async)?._showInfo_Property?._price}}
+                </div>
+                <div>
+                    {{(data_Info$|async)?._discountInfo}}
+
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>

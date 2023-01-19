@@ -20,7 +20,7 @@
     <div class="search-result">
         <div class="search-result-container" *ngIf="(data_searchResult$ | async)?.length;else noneResult">
             <ng-container *ngFor="let data of (data_searchResult$ | async)">
-                <div class="exhibition-card">
+                <div class="exhibition-card" routerLink="/detail/{{data._UID}}">
                     <div [ngClass]="{'search-card-img-empty':!data._haveImg}"
                         class="exhibition-card-img search-card-img">
                         <img [src]="data._imageUrl" />
