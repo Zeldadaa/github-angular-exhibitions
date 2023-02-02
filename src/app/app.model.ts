@@ -1,3 +1,4 @@
+import { SafeResourceUrl } from '@angular/platform-browser';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -22,13 +23,19 @@ export class C_EXHIBITIONS {
     return ret;
   }
 
+  /**
+   * 地圖url
+   * @type {SafeResourceUrl}
+   * @memberof C_EXHIBITIONS
+   */
+  _locationMapUrl: SafeResourceUrl = '';
+
   _showUnit: string = '';
   _discountInfo: string = '';
   _descriptionFilterHtml: string = '';
   _imageUrl: string = '';
-  // _haveImg: boolean = (this._imageUrl) ? true : false;
 
-  get _haveImg():boolean{
+  get _haveImg(): boolean {
     let ret = false;
     if (this._imageUrl) {
       ret = true;
@@ -117,7 +124,7 @@ export class C_SHOWINFO {
   _location: string = '';
   _locationName: string = '';
   _onSales: string = '';
- 
+
   get _onSales_bool(): boolean {
     let ret = false;
     if (this._onSales === "Y") {

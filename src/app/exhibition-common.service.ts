@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
-import { Observable, shareReplay, tap, map } from 'rxjs';
+import { Observable, shareReplay, tap, map, observable } from 'rxjs';
 import { C_EXHIBITIONS, ExhibitionsAdapter } from './app.model';
 
 @Injectable({
@@ -30,10 +31,10 @@ export class ExhibitionCommonService {
     const ret = apiDataArray.pipe(map((data) => {
       return data.map((item: any) => this.ExhibitionsAdapter.adapter(item));
     }));
-    // ret.subscribe(s=>console.log(s));
 
     return ret;
   }
+
 
 
 }
